@@ -48,7 +48,10 @@ Car.prototype.pick_up = function(name) {
 };
 
 Car.prototype.dropOff = function(name) {
-
+  if (this.state === "on" && this.passengers.indexOf(name) !== -1) {
+    console.log("Driving to pick up " + name);
+    this.passengers.pop(name);
+  }
 };
 
 module.exports = Car;

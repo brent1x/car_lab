@@ -1,4 +1,4 @@
-function Car(make, model, year, color ) {
+function Car(make, model, year, color) {
   this.make = make;
   this.model = model;
   this.year = year;
@@ -38,19 +38,19 @@ Car.prototype.park = function() {
   }
 };
 
-Car.prototype.pick_up = function(name) {
+Car.prototype.pick_up = function(person) {
   if (this.state === "on") {
-    this.passengers.push(name);
-    console.log("driving to pick up " + name);
+    this.passengers.push(person);
+    console.log("driving to pick up " + person);
   } else {
     this.passengers = [];
   }
 };
 
-Car.prototype.dropOff = function(name) {
-  if (this.state === "on" && this.passengers.indexOf(name) !== -1) {
-    console.log("Driving to pick up " + name);
-    this.passengers.pop(name);
+Car.prototype.dropOff = function(person) {
+  if (this.state === "on") { // && this.passengers.indexOf(person) !== -1) {
+    console.log("Driving to pick up " + person);
+    this.passengers.splice(this.passengers.indexOf(person), 1);
   }
 };
 
